@@ -33,8 +33,9 @@ type TileMap struct {
 }
 
 type Scene struct {
-	Dots    []DotGroup
-	TileMap []TileMap
+	Dots     []DotGroup
+	TileMap  []TileMap
+	Textures []rl.Texture2D
 }
 
 func Render(gameState GameState, renderFunctions []RenderFunction) {
@@ -67,16 +68,8 @@ func RenderCasino(gameState GameState) {
 	for y := 0; y < gameState.Scenes[gameState.CurrentState].TileMap[0].Height; y++ {
 		for x := 0; x < gameState.Scenes[gameState.CurrentState].TileMap[0].Width; x++ {
 			if (y*x+1)%2 == 0 {
-				DrawRectangle(x*tileWidth, y*tileWidth, tileWidth, tileWidth, gameState.Camera, rl.Blue)
-			}
-			if (y*x+1)%3 == 0 {
-				DrawRectangle(x*tileWidth, y*tileWidth, tileWidth, tileWidth, gameState.Camera, rl.Green)
-			}
-			if (y*x+1)%5 == 0 {
-				DrawRectangle(x*tileWidth, y*tileWidth, tileWidth, tileWidth, gameState.Camera, rl.Red)
-			}
-			if (y*x+1)%7 == 0 {
-				DrawRectangle(x*tileWidth, y*tileWidth, tileWidth, tileWidth, gameState.Camera, rl.Yellow)
+				//DrawRectangle(x*tileWidth, y*tileWidth, tileWidth, tileWidth, gameState.Camera, rl.Blue)
+				rl.DrawTexture(gameState.Scenes[gameState.CurrentState].Textures[0], int32(x*tileWidth), int32(y*tileWidth), rl.White)
 			}
 		}
 	}

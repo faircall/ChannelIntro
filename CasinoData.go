@@ -1,5 +1,7 @@
 package main
 
+import rl "github.com/gen2brain/raylib-go/raylib"
+
 func MakeCasinoData() Scene {
 	var result Scene
 	var tileMaps []TileMap
@@ -14,6 +16,10 @@ func MakeCasinoData() Scene {
 
 	tileMaps = append(tileMaps, tileMap)
 	result.TileMap = tileMaps
+
+	grassTexture := rl.LoadTexture("Textures/grass1.png")
+
+	result.Textures = append(result.Textures, grassTexture)
 
 	return result
 
